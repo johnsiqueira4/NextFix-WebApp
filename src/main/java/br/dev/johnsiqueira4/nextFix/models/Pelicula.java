@@ -8,6 +8,7 @@ import java.util.*;
 
 @Entity
 @Data // Genera: toString, equals, hashcode, getters y los setters  -- //@ToString.Exclude
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pelicula {
@@ -36,6 +37,7 @@ public class Pelicula {
             inverseJoinColumns = @JoinColumn(name = "plataforma_id")
     )
     @ToString.Exclude // Para resolver o erro de recursividade Lombok, de Memory Leak em relações @ManyToMany
+    @Builder.Default // "No permite que genere una lista vacia"
     private List<Plataforma> plataformasDisponibles = new ArrayList<>(); // netflix, hbo, cine, tv, etc
 
 }
