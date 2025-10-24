@@ -16,7 +16,7 @@ public class Plataforma {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String nome;
+    private String nombre;
 
     private BigDecimal precio;
 
