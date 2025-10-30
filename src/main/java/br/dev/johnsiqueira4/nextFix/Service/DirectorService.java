@@ -19,7 +19,7 @@ public class DirectorService {
         );
     }
 
-    public List<Director> obtenerDirectores() {
+    public List<Director> listarDirectores() {
         return directorRepository.findAll();
     }
 
