@@ -83,4 +83,50 @@ class PeliculaServiceTest {
         assertFalse(peliculaService.listarPeliculas().isEmpty());
     }
 
+    @Test
+    void testObtenerPeliculaPorId() {
+        Long idPelicula = 1L;
+        Pelicula pelicula = peliculaService.obtenerPeliculaPorId(idPelicula);
+
+        assertNotNull(pelicula);
+        assertEquals(idPelicula, pelicula.getId());
+    }
+
+    @Test
+    void testActualizarPeliculaSinPlataformas() {
+        Long idPelicula = 1L;
+
+        Pelicula peliculaActualizada = new Pelicula();
+        peliculaActualizada.setTitulo("Robocop");
+        peliculaActualizada.setGenero("Suspenso");
+        peliculaActualizada.setFechaEstreno(LocalDate.now());
+        peliculaActualizada.setDirector(directorGuardado);
+
+        peliculaService.actualizarPelicula(idPelicula, peliculaActualizada, directorGuardado.getId(), new ArrayList<>());
+
+        Pelicula peliculaDespuesDeActualizar = peliculaService.obtenerPeliculaPorId(idPelicula);
+        assertEquals(peliculaActualizada.getTitulo(), peliculaDespuesDeActualizar.getTitulo());
+        assertEquals(peliculaActualizada.getGenero(), peliculaDespuesDeActualizar.getGenero());
+        assertEquals(peliculaActualizada.getFechaEstreno(), peliculaDespuesDeActualizar.getFechaEstreno());
+        assertEquals(peliculaActualizada.getDirector().getId(), peliculaDespuesDeActualizar.getDirector().getId());
+    }
+
+    @Test
+    void testEliminarPelicula() {
+        List<Pelicula> peliculas = peliculaService.listarPeliculas();
+        assertFalse(peliculas.isEmpty());
+        Long idPeliculaAEliminar = peliculas.getLast().getId();;
+
+        peliculaService.eliminarPelicula(idPeliculaAEliminar);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            peliculaService.obtenerPeliculaPorId(idPeliculaAEliminar);
+        });
+
+        String expectedMessage = "No se encontró la pelicula con el id: " + idPeliculaAEliminar;
+        String actualMessage = exception.getMessage();
+
+        //Corroboramos que efectivamente fue eliminada
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 }
