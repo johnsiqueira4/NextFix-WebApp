@@ -11,7 +11,7 @@
     <tr>
         <th>ID</th>
         <th>Nacionalidad</th>
-        <th>Fecha de nacimiento</th>
+        <th>Fecha de Nacimiento</th>
         <th>Email</th>
         <th>Películas</th>
     </tr>
@@ -25,7 +25,7 @@
         <td th:text="${director.email}"></td>
         <td>
            <label>
-               <select disabled size="5" style="max-height: 75px; overflow-y: auto">
+               <select disabled size="5" style="max-height: 75px; overflow-y: auto;">
                     <option th:each="pelicula : ${director.getPeliculasDirigidas()}" th:value="${pelicula.id}" th:text="${pelicula.titulo}"></option>
                </select>
            </label>

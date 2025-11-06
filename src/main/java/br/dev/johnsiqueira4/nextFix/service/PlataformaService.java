@@ -1,4 +1,4 @@
-package br.dev.johnsiqueira4.nextFix.Service;
+package br.dev.johnsiqueira4.nextFix.service;
 
 import br.dev.johnsiqueira4.nextFix.models.Pelicula;
 import br.dev.johnsiqueira4.nextFix.models.Plataforma;

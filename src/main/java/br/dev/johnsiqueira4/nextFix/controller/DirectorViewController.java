@@ -1,17 +1,13 @@
 package br.dev.johnsiqueira4.nextFix.controller;
 
-import br.dev.johnsiqueira4.nextFix.Service.DirectorService;
+import br.dev.johnsiqueira4.nextFix.service.DirectorService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-//@AllArgsConstructor
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 //@RequestMapping("/director")
 public class DirectorViewController {
 

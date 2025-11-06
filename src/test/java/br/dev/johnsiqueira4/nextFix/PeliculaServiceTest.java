@@ -1,6 +1,6 @@
 package br.dev.johnsiqueira4.nextFix;
 
-import br.dev.johnsiqueira4.nextFix.Service.*;
+import br.dev.johnsiqueira4.nextFix.service.*;
 import br.dev.johnsiqueira4.nextFix.models.*;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.*;
