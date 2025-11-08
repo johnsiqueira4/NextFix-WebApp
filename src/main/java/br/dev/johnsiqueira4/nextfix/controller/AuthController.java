@@ -1,7 +1,7 @@
-package br.dev.johnsiqueira4.nextFix.controller;
+package br.dev.johnsiqueira4.nextfix.controller;
 
-import br.dev.johnsiqueira4.nextFix.models.Usuario;
-import br.dev.johnsiqueira4.nextFix.service.CustomUserDetailsService;
+import br.dev.johnsiqueira4.nextfix.models.Usuario;
+import br.dev.johnsiqueira4.nextfix.service.CustomUserDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

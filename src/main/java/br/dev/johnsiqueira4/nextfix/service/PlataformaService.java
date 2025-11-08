@@ -1,8 +1,8 @@
-package br.dev.johnsiqueira4.nextFix.service;
+package br.dev.johnsiqueira4.nextfix.service;
 
-import br.dev.johnsiqueira4.nextFix.models.Pelicula;
-import br.dev.johnsiqueira4.nextFix.models.Plataforma;
-import br.dev.johnsiqueira4.nextFix.repository.PlataformaRepository;
+import br.dev.johnsiqueira4.nextfix.models.Pelicula;
+import br.dev.johnsiqueira4.nextfix.models.Plataforma;
+import br.dev.johnsiqueira4.nextfix.repository.PlataformaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

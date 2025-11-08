@@ -1,7 +1,7 @@
-package br.dev.johnsiqueira4.nextFix;
+package br.dev.johnsiqueira4.nextfix;
 
-import br.dev.johnsiqueira4.nextFix.service.*;
-import br.dev.johnsiqueira4.nextFix.models.*;
+import br.dev.johnsiqueira4.nextfix.service.*;
+import br.dev.johnsiqueira4.nextfix.models.*;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

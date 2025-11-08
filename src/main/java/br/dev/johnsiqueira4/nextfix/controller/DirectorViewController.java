@@ -1,6 +1,6 @@
-package br.dev.johnsiqueira4.nextFix.controller;
+package br.dev.johnsiqueira4.nextfix.controller;
 
-import br.dev.johnsiqueira4.nextFix.service.DirectorService;
+import br.dev.johnsiqueira4.nextfix.service.DirectorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

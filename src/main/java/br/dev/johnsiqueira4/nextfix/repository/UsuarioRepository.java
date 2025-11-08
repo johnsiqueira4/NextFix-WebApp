@@ -1,6 +1,6 @@
-package br.dev.johnsiqueira4.nextFix.repository;
+package br.dev.johnsiqueira4.nextfix.repository;
 
-import br.dev.johnsiqueira4.nextFix.models.*;
+import br.dev.johnsiqueira4.nextfix.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

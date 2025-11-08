@@ -1,4 +1,4 @@
-package br.dev.johnsiqueira4.nextFix.models;
+package br.dev.johnsiqueira4.nextfix.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

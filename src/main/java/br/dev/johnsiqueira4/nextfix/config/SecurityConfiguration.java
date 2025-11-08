@@ -1,4 +1,4 @@
-package br.dev.johnsiqueira4.nextFix.config;
+package br.dev.johnsiqueira4.nextfix.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
-import static org.springframework.boot.security.autoconfigure.web.servlet.PathRequest.toH2Console;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @Configuration
 @EnableWebSecurity
@@ -30,17 +31,11 @@ public class SecurityConfiguration {
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
                         .loginPage("/login").permitAll()
                         .defaultSuccessUrl("/peliculas"))
-//                .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.permitAll()
-//                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                        .logoutSuccessUrl("/login"))
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
-                        .permitAll()
-                )
+                .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.permitAll()
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login"))
                 .headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         return http.build();
     }
-
 }

@@ -1,10 +1,10 @@
-package br.dev.johnsiqueira4.nextFix.service;
+package br.dev.johnsiqueira4.nextfix.service;
 
-import br.dev.johnsiqueira4.nextFix.models.Director;
-import br.dev.johnsiqueira4.nextFix.models.Pelicula;
-import br.dev.johnsiqueira4.nextFix.repository.DirectorRepository;
-import br.dev.johnsiqueira4.nextFix.repository.PeliculaRepository;
-import br.dev.johnsiqueira4.nextFix.repository.PlataformaRepository;
+import br.dev.johnsiqueira4.nextfix.models.Director;
+import br.dev.johnsiqueira4.nextfix.models.Pelicula;
+import br.dev.johnsiqueira4.nextfix.repository.DirectorRepository;
+import br.dev.johnsiqueira4.nextfix.repository.PeliculaRepository;
+import br.dev.johnsiqueira4.nextfix.repository.PlataformaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

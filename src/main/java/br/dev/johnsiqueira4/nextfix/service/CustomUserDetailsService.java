@@ -1,7 +1,7 @@
-package br.dev.johnsiqueira4.nextFix.service;
+package br.dev.johnsiqueira4.nextfix.service;
 
-import br.dev.johnsiqueira4.nextFix.models.*;
-import br.dev.johnsiqueira4.nextFix.repository.*;
+import br.dev.johnsiqueira4.nextfix.models.*;
+import br.dev.johnsiqueira4.nextfix.repository.*;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;

@@ -1,4 +1,4 @@
-package br.dev.johnsiqueira4.nextFix;
+package br.dev.johnsiqueira4.nextfix;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

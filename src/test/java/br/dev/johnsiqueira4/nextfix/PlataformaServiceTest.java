@@ -1,7 +1,7 @@
-package br.dev.johnsiqueira4.nextFix;
+package br.dev.johnsiqueira4.nextfix;
 
-import br.dev.johnsiqueira4.nextFix.service.PlataformaService;
-import br.dev.johnsiqueira4.nextFix.models.Plataforma;
+import br.dev.johnsiqueira4.nextfix.service.PlataformaService;
+import br.dev.johnsiqueira4.nextfix.models.Plataforma;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
