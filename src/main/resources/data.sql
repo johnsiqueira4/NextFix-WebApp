@@ -38,3 +38,15 @@ VALUES (1, 1),
        (2, 2),
        (2, 1),
        (3, 4);
+
+-- Inserción de Usuários (Contraseña user)
+INSERT INTO USUARIO (username, contrasena, rol, nombre, apellido)
+VALUES ('admin', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_ADMIN', 'Jose', 'Pérez'),
+       ('lectura1', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_LECTURA', 'Martin', 'Gomez'),
+       ('lectura2', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_LECTURA', 'Juan', 'Villalba');-- Inserción de Usuários (Contraseña user)
+
+-- Inserción de Usuários con Directores (Contraseña user)
+INSERT INTO USUARIO (username, contrasena, rol, nombre, apellido)
+VALUES ('director_oderay', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Oderay', 'Pérez'),
+       ('director_patricio', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Patricio', 'Gomez'),
+       ('director_giancarlo', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba');
