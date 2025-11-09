@@ -1,5 +1,6 @@
 package br.dev.johnsiqueira4.nextfix.controller;
 
+import br.dev.johnsiqueira4.nextfix.service.CustomUserDetailsService;
 import br.dev.johnsiqueira4.nextfix.service.DirectorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,15 @@ public class DirectorViewController {
 
     private final DirectorService directorService;
 
+    private final CustomUserDetailsService  customUserDetailsService;
+
 
 //    @GetMapping("/ruta")
 //    @RequestMapping(value = "/ruta", method = RequestMethod.GET)
     @GetMapping("/directores")
     public String listarDirectores(Model model) {
         model.addAttribute("directores", directorService.listarDirectores());
+        model.addAttribute("userService", customUserDetailsService);
 
         return "listaDirectores";
     }

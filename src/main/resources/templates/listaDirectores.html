@@ -10,6 +10,8 @@
     <thead class="thead-dark">
     <tr>
         <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
         <th>Nacionalidad</th>
         <th>Fecha de Nacimiento</th>
         <th>Email</th>
@@ -20,13 +22,15 @@
     <tbody>
     <tr th:each="director : ${directores}">
         <td th:text="${director.id}"></td>
+        <td th:text="${userService.obtenerUsuarioPorDirector(director)?.nombre ?: 'Nombre no disponible'}"></td>
+        <td th:text="${userService.obtenerUsuarioPorDirector(director)?.apellido ?: 'Apellido no disponible'}"></td>
         <td th:text="${director.nacionalidad}"></td>
         <td th:text="${director.fechaNascimiento}"></td>
         <td th:text="${director.email}"></td>
         <td>
            <label>
                <select disabled size="5" style="max-height: 75px; overflow-y: auto;">
-                    <option th:each="pelicula : ${director.getPeliculasDirigidas()}" th:value="${pelicula.id}" th:text="${pelicula.titulo}"></option>
+                    <option th:each="pelicula : ${director.peliculasDirigidas}" th:value="${pelicula.id}" th:text="${pelicula.titulo}"></option>
                </select>
            </label>
         </td>

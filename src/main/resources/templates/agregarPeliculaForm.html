@@ -25,7 +25,8 @@
     <div class="form-group">
         <label for="idDirector">Director:</label>
         <select class="form-control" id="idDirector" name="idDirector" required>
-            <option th:each="director : ${directores}" th:value="${director.id}" th:text="${director.email}"></option>
+            <option th:each="director : ${directores}" th:value="${director.id}" th:text="${userService.obtenerUsuarioPorDirector(director)?.nombre + ' ' +
+            userService.obtenerUsuarioPorDirector(director)?.apellido ?: 'No disponible'}"></option>
         </select>
     </div>
 

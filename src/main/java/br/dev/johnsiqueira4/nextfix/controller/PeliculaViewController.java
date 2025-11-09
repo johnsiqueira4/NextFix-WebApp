@@ -4,6 +4,9 @@ import br.dev.johnsiqueira4.nextfix.service.*;
 import br.dev.johnsiqueira4.nextfix.models.Pelicula;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +24,25 @@ public class PeliculaViewController {
 
     private final PlataformaService plataformaService;
 
+    private final CustomUserDetailsService customUserDetailsService;
+
     @GetMapping("/peliculas")
     public String listarPeliculas(Model model) {
         model.addAttribute("peliculas", peliculaService.listarPeliculas());
+        model.addAttribute("userService", customUserDetailsService);
+
+        mostrarRolesUsuarioActual();
 
         return "listaPeliculas";
+    }
+
+    private void mostrarRolesUsuarioActual() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info(authentication.getName());
+
+        for  (GrantedAuthority authority : authentication.getAuthorities()) {
+            log.info("Rol actual: {}", authority.getAuthority());
+        }
     }
 
     @GetMapping("/agregarPelicula")
@@ -33,6 +50,7 @@ public class PeliculaViewController {
         model.addAttribute("directores",  directorService.listarDirectores());
         model.addAttribute("plataformas", plataformaService.listarPlataformas());
         model.addAttribute("pelicula",  new Pelicula());
+        model.addAttribute("userService", customUserDetailsService);
 
         return "agregarPeliculaForm";
     }

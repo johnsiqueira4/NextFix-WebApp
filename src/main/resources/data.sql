@@ -46,7 +46,13 @@ VALUES ('admin', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p
        ('lectura2', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_LECTURA', 'Juan', 'Villalba');-- Inserción de Usuários (Contraseña user)
 
 -- Inserción de Usuários con Directores (Contraseña user)
-INSERT INTO USUARIO (username, contrasena, rol, nombre, apellido)
-VALUES ('director_oderay', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Oderay', 'Pérez'),
-       ('director_patricio', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Patricio', 'Gomez'),
-       ('director_giancarlo', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba');
+INSERT INTO USUARIO (username, contrasena, rol, nombre, apellido, director_id)
+VALUES ('director_oderay', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Oderay', 'Pérez', 1),
+       ('director_patricio', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Patricio', 'Gomez', 2),
+       ('director_giancarlo', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba', 3),
+       ('director_clairedupont', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Claire', 'Dupont', 4),
+       ('director_emilybrown', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Emily', 'Brown', 5),
+       ('director_2', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba', 6),
+       ('director_3', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba', 7),
+       ('director_4', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba', 8),
+       ('director_5', 	'{bcrypt}$2a$12$qtLHASGIZ9sxAMzgg2IzO.knM6qzmWYBC7KUc9BhpuOm9p52yMmy.', 'ROL_DIRECTOR', 'Giancarlo', 'Villalba', 9);
