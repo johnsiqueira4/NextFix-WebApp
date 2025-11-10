@@ -115,7 +115,7 @@ class PeliculaServiceTest extends BaseTest {
     void testEliminarPelicula() {
         List<Pelicula> peliculas = peliculaService.listarPeliculas();
         assertFalse(peliculas.isEmpty());
-        Long idPeliculaAEliminar = peliculas.getLast().getId();;
+        Long idPeliculaAEliminar = peliculas.get(peliculas.size() - 1).getId();;
 
         peliculaService.eliminarPelicula(idPeliculaAEliminar);
 

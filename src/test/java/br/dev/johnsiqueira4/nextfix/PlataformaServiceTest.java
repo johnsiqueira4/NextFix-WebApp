@@ -58,7 +58,7 @@ class PlataformaServiceTest extends BaseTest {
     void testEliminarPlataforma() {
         List<Plataforma> plataformaList = plataformaService.listarPlataformas();
         assertFalse(plataformaList.isEmpty());
-        Long idPlataformaAEliminar = plataformaList.getLast().getId();
+        Long idPlataformaAEliminar = plataformaList.get(plataformaList.size() - 1).getId();
 
         plataformaService.eliminarPlataforma(idPlataformaAEliminar);
 
