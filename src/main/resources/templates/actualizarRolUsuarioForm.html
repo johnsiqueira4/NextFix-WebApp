@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:insert="~{fragments/header}"></head>
+
+<body class="container mt-5">
+
+<h2 class="mb-4">Actualizar Rol Usuario (<b>Solo ADMIN</b>)</h2>
+
+<form th:action="@{/actualizarRolUsuario/{id}(id=${usuario.id})}" method="post" class="form">
+    <input type="hidden" name="_method" value="put">
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" class="form-control" th:value="${usuario.username}" required disabled>
+    </div>
+
+    <div class="form-group">
+        <label for="rol">Rol:</label>
+<!--        <input type="text" id="rol" name="rol" class="form-control" required>-->
+        <select class="form-control" id="rol" name="rol" required onchange="toogleInputs()">
+            <option value="ROL_ADMIN" th:selected="${usuario.rol == 'ROL_ADMIN'}">ROL_ADMIN</option>
+            <option value="ROL_LECTURA" th:selected="${usuario.rol == 'ROL_LECTURA'}">ROL_LECTURA</option>
+            <option value="ROL_DIRECTOR" th:selected="${usuario.rol == 'ROL_DIRECTOR'}">ROL_DIRECTOR</option>
+        </select>
+    </div>
+
+    <!-- Inputs adicionales para ROL_DIRECTOR   -->
+    <div class="form-group" id="nacionalidadGroup" style="display: none;">
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" th:value="${usuario?.director?.nacionalidad}" required>
+    </div>
+    <div class="form-group" id="fechaNacimientoGroup" style="display: none;">
+        <label for="fechaNacimiento">Fecha Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" th:value="${usuario?.director?.fechaNascimiento}" min="1970-01-01" max="3000-12-31" required>
+    </div>
+    <div class="form-group" id="emailGroup" style="display: none;">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" class="form-control" th:value="${usuario?.director?.email}" required>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+</form>
+
+<hr>
+
+<!-- Enlace para regresar a la lista de peliculas -->
+<a th:href="@{/peliculas}" class="btn btn-secondary">Ver Lista de Peliculas</a>
+<div th:replace="~{fragments/footer}"></div>
+
+<script th:inline="javascript">
+    function toogleInputs() {
+        let rol = document.getElementById("rol").value;
+        let nacionalidadGroup = document.getElementById("nacionalidadGroup");
+        let fechaNacimientoGroup = document.getElementById("fechaNacimientoGroup");
+        let emailGroup = document.getElementById("emailGroup");
+
+        if (rol === "ROL_DIRECTOR") {
+            nacionalidadGroup.style.display = "block";
+            fechaNacimientoGroup.style.display = "block";
+            emailGroup.style.display = "block";
+
+            document.getElementById("nacionalidad").required = true;
+            document.getElementById("fechaNacimiento").required = true;
+            document.getElementById("email").required = true;
+        } else {
+            nacionalidadGroup.style.display = "none";
+            emailGroup.style.display = "none";
+
+            document.getElementById("nacionalidad").required = false;
+            document.getElementById("fechaNacimiento").required = false;
+            document.getElementById("email").required = false;
+        }
+
+        window.onload = function () { // verificar rol seleccionado al cargar la pag.
+            toogleInputs();
+        }
+    }
+</script>
+
+
+</body>
+</html>

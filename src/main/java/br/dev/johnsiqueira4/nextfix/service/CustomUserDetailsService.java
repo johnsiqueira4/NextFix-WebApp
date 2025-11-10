@@ -4,6 +4,7 @@ import br.dev.johnsiqueira4.nextfix.models.*;
 import br.dev.johnsiqueira4.nextfix.repository.*;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
@@ -97,6 +99,29 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
+    public void actualizarRolUsuario(Long id, String nuevoRol) {
+         Usuario usuario = obtenerUsuarioPorId(id);
+
+         if (usuario == null) {
+             throw new UsernameNotFoundException("actualizarRolUsuario: Usuario no encontrado");
+         }
+
+         usuario.setRol(nuevoRol);
+         usuarioRepository.save(usuario);
+    }
+
+    public void actualizarRolUsuarioDirector(Long id, Director director) {
+        Usuario usuario = obtenerUsuarioPorId(id);
+
+        if (usuario == null) {
+            throw new UsernameNotFoundException("actualizarRolUsuarioDirector: Usuario no encontrado");
+        }
+
+        usuario.setRol(ROL_DIRECTOR);
+        usuario.setDirector(director);
+        usuarioRepository.save(usuario);
     }
 
 }

@@ -1,5 +1,7 @@
 package br.dev.johnsiqueira4.nextfix.controller;
 
+import br.dev.johnsiqueira4.nextfix.models.Director;
+import br.dev.johnsiqueira4.nextfix.repository.UsuarioRepository;
 import br.dev.johnsiqueira4.nextfix.service.*;
 import br.dev.johnsiqueira4.nextfix.models.Pelicula;
 import lombok.AllArgsConstructor;
@@ -26,19 +28,34 @@ public class PeliculaViewController {
 
     private final CustomUserDetailsService customUserDetailsService;
 
+    private final UsuarioRepository usuarioRepository;
+
     @GetMapping("/peliculas")
     public String listarPeliculas(Model model) {
-        model.addAttribute("peliculas", peliculaService.listarPeliculas());
-        model.addAttribute("userService", customUserDetailsService);
 
-        mostrarRolesUsuarioActual();
+        List<Pelicula> peliculas;
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        log.info(username);
+        Director director = usuarioRepository.findByUsername(username).getDirector();
+
+        if (director != null) {
+            peliculas = director.getPeliculasDirigidas();
+        }
+        else {
+            peliculas = peliculaService.listarPeliculas();
+        }
+
+        mostrarRolesUsuarioActual(authentication);
+
+        model.addAttribute("peliculas", peliculas);
+        model.addAttribute("userService", customUserDetailsService);
 
         return "listaPeliculas";
     }
 
-    private void mostrarRolesUsuarioActual() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info(authentication.getName());
+    private void mostrarRolesUsuarioActual(Authentication authentication) {
 
         for  (GrantedAuthority authority : authentication.getAuthorities()) {
             log.info("Rol actual: {}", authority.getAuthority());
