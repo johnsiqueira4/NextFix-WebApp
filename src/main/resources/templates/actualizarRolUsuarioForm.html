@@ -51,27 +51,39 @@
 
 <script th:inline="javascript">
     function toogleInputs() {
-        let rol = document.getElementById("rol").value;
-        let nacionalidadGroup = document.getElementById("nacionalidadGroup");
-        let fechaNacimientoGroup = document.getElementById("fechaNacimientoGroup");
-        let emailGroup = document.getElementById("emailGroup");
+        // let rol = document.getElementById("rol").value;
+        // let nacionalidadGroup = document.getElementById("nacionalidadGroup");
+        // let fechaNacimientoGroup = document.getElementById("fechaNacimientoGroup");
+        // let emailGroup = document.getElementById("emailGroup");
+        //
+        // if (rol === "ROL_DIRECTOR") {
+        //     nacionalidadGroup.style.display = "block";
+        //     fechaNacimientoGroup.style.display = "block";
+        //     emailGroup.style.display = "block";
+        //
+        //     document.getElementById("nacionalidad").required = true;
+        //     document.getElementById("fechaNacimiento").required = true;
+        //     document.getElementById("email").required = true;
+        // } else {
+        //     nacionalidadGroup.style.display = "none";
+        //     emailGroup.style.display = "none";
+        //
+        //     document.getElementById("nacionalidad").required = false;
+        //     document.getElementById("fechaNacimiento").required = false;
+        //     document.getElementById("email").required = false;
+        // }
 
-        if (rol === "ROL_DIRECTOR") {
-            nacionalidadGroup.style.display = "block";
-            fechaNacimientoGroup.style.display = "block";
-            emailGroup.style.display = "block";
+        const rol = document.getElementById('rol').value;
+        const fields = ["nacionalidad", "fechaNacimiento", "email"];
 
-            document.getElementById("nacionalidad").required = true;
-            document.getElementById("fechaNacimiento").required = true;
-            document.getElementById("email").required = true;
-        } else {
-            nacionalidadGroup.style.display = "none";
-            emailGroup.style.display = "none";
+        fields.forEach(field => {
+            const group = document.getElementById( `${field}Group`)
+            const input = document.getElementById(field);
+            const isDirector = rol === "ROL_DIRECTOR";
 
-            document.getElementById("nacionalidad").required = false;
-            document.getElementById("fechaNacimiento").required = false;
-            document.getElementById("email").required = false;
-        }
+            group.style.display = isDirector ? 'block' : 'none';
+            input.required = isDirector;
+        })
 
         window.onload = function () { // verificar rol seleccionado al cargar la pag.
             toogleInputs();
